@@ -33,4 +33,6 @@ int main(int argc, char **argv) {
 
 	close(destFd);
 	close(copyFd);
+
+	return 0;
 }

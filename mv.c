@@ -35,4 +35,6 @@ int main(int argc, char **argv) {
 	close(copyFd);
 
 	unlink(argv[1]);
+
+	return 0;
 }
