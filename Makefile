@@ -1,4 +1,4 @@
-all: ls cp mv touch cat sleep stat grep du
+all: ls cp mv touch cat sleep stat grep du chroot
 
 ls:
 	gcc ls.c -o ls
@@ -26,3 +26,6 @@ grep:
 
 du:
 	gcc du.c -o du
+
+chroot:
+	gcc chroot.c -o chroot
