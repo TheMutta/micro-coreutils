@@ -11,9 +11,13 @@ int main(int argc, char **argv) {
 	DIR *dir = opendir(argv[1]);
 	struct dirent *entry = readdir(dir);
 	while(entry) {
-		printf("%s\n", entry->d_name);
+		if (entry->d_name[0] != '.') {
+			printf("%s\t", entry->d_name);
+		}
 		entry = readdir(dir);
 	}
+
+	printf("\n");
 
 	closedir(dir);
 

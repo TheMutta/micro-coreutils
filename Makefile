@@ -1,4 +1,4 @@
-all: ls cp mv touch cat sleep stat grep du chroot
+all: ls cp mv touch cat sleep stat grep du chroot uname
 
 ls:
 	gcc ls.c -o ls
@@ -29,3 +29,6 @@ du:
 
 chroot:
 	gcc chroot.c -o chroot
+
+uname:
+	gcc uname.c -o uname
