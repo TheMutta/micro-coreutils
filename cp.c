@@ -8,12 +8,28 @@
 #define CHUNK_SIZE (1024 * 512)
 
 int main(int argc, char **argv) {
-	if (argc != 3) return -1;
-	
-	printf("Copiying %s to %s\n", argv[1], argv[2]);
+	if (argc < 3) return -1;
 
-	int copyFd = open(argv[1], O_RDONLY);
-	int destFd = open(argv[2], O_WRONLY| O_TRUNC | O_CREAT);
+	int opt;
+	while ((opt = getopt(argc, argv, "rf")) != -1) {
+		switch (opt) {
+			case 'r':
+				printf("Recursive.\n");
+				break;
+			case 'f':
+				printf("Forced.\n");
+				break;
+			default:
+				printf("Invalid option: %c\n", optopt);
+		}
+   	}
+
+	const char *origin = argv[optind];
+	const char *destination = argv[optind + 1];
+	printf("Copiying %s to %s\n", origin, destination);
+
+	int copyFd = open(origin, O_RDONLY);
+	int destFd = open(destination, O_WRONLY| O_TRUNC | O_CREAT);
 
 	struct stat stats;
 	fstat(copyFd, &stats);

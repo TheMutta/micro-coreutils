@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
-#include <dirent.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -8,9 +8,16 @@
 #define CHUNK_SIZE (1024 * 512)
 
 int main(int argc, char **argv) {
-	if (argc != 2) return -1;
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <file>\n", argv[0]);
+		return EXIT_FAILURE;
+	}
 
 	int catFd = open(argv[1], O_RDONLY);
+	if (catFd < 0) {
+		perror("open");
+		return EXIT_FAILURE;
+	}
 
 	struct stat stats;
 	fstat(catFd, &stats);
