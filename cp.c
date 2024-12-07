@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 	printf("Copiying %s to %s\n", origin, destination);
 
 	int copyFd = open(origin, O_RDONLY);
-	int destFd = open(destination, O_WRONLY| O_TRUNC | O_CREAT);
+	int destFd = open(destination, O_WRONLY| O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 
 	struct stat stats;
 	fstat(copyFd, &stats);
