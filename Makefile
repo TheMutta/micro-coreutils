@@ -2,7 +2,7 @@
 
 XCFLAGS = -std=c99 -D_DEFAULT_SOURCE ${CFLAGS}
 
-all: ls cp mv touch cat sleep stat grep du chroot uname
+all: ls cp mv touch cat sleep stat grep du chroot uname whoami
 
 ls:
 	gcc ${XCFLAGS} ls.c -o ls
@@ -37,7 +37,10 @@ chroot:
 uname:
 	gcc ${XCFLAGS} uname.c -o uname
 
+whoami:
+	gcc ${XCFLAGS} whoami.c -o whoami
+
 clean:
-	rm -f ls cp mv touch cat sleep stat grep du chroot uname
+	rm -f ls cp mv touch cat sleep stat grep du chroot uname whoami
 
 .PHONY: all clean
