@@ -1,34 +1,43 @@
+.POSIX:
+
+XCFLAGS = -std=c99 -D_DEFAULT_SOURCE ${CFLAGS}
+
 all: ls cp mv touch cat sleep stat grep du chroot uname
 
 ls:
-	gcc ls.c -o ls
+	gcc ${XCFLAGS} ls.c -o ls
 
 cp:
-	gcc cp.c -o cp
+	gcc ${XCFLAGS} cp.c -o cp
 
 mv:
-	gcc mv.c -o mv
+	gcc ${XCFLAGS} mv.c -o mv
 
 touch:
-	gcc touch.c -o touch
+	gcc ${XCFLAGS} touch.c -o touch
 
 cat:
-	gcc cat.c -o cat
+	gcc ${XCFLAGS} cat.c -o cat
 
 sleep:
-	gcc sleep.c -o sleep
+	gcc ${XCFLAGS} sleep.c -o sleep
 
 stat:
-	gcc stat.c -o stat
+	gcc ${XCFLAGS} stat.c -o stat
 
 grep:
-	gcc grep.c -o grep
+	gcc ${XCFLAGS} grep.c -o grep
 
 du:
-	gcc du.c -o du
+	gcc ${XCFLAGS} du.c -o du
 
 chroot:
-	gcc chroot.c -o chroot
+	gcc ${XCFLAGS} chroot.c -o chroot
 
 uname:
-	gcc uname.c -o uname
+	gcc ${XCFLAGS} uname.c -o uname
+
+clean:
+	rm -f ls cp mv touch cat sleep stat grep du chroot uname
+
+.PHONY: all clean

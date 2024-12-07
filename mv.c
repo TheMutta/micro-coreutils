@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
 	printf("Moving %s to %s\n", argv[1], argv[2]);
 
 	int copyFd = open(argv[1], O_RDONLY);
-	int destFd = open(argv[2], O_WRONLY| O_TRUNC | O_CREAT);
+	int destFd = open(argv[2], O_WRONLY| O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 
 	struct stat stats;
 	fstat(copyFd, &stats);
